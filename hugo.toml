@@ -1,0 +1,188 @@
+baseURL = "http://andyholt.github.io/"
+
+# hugo theme to use
+theme = "LoveIt"
+
+# Website title
+title = "Andy Holt's Landing Page"
+
+# language set up
+languageCode = 'en'
+languageName = "English"
+hasCJKLanguage = false
+
+# default number of posts per page
+# todo: (does it have to be paginated?)
+paginate = 12
+
+# use robots.txt from LoveIt theme
+enableRobotsTXT = true
+# use git commit log (?)
+enableGitInfo = true
+# use emoji
+enableEmoji = true
+
+# ignore some build errors
+ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+# Author config
+[author]
+  name = "Andy Holt"
+  email = "my-email@example.org.uk"
+  link = ""
+
+[params]
+  # site default theme ["auto", "light", "dark"]
+  defaultTheme = "auto"
+  # public git repo url
+  gitRepo = "https://github.com/AndyHolt/andyholt.github.io"
+  # hash function used for SRI, if any
+  fingerprint = ""
+  # date format
+  dateFormat = "2006-01-02"
+  # website title for Open Graph and Twitter Cards
+  title = "Andy Holt"
+  # website description for RSS, SEO, Open Graph and Twitter Cards
+  description = "Andy Holt's landing page"
+  # TODO: website images for Open Graph and Twitter Cards
+  # images = ["/logo.png"]
+
+# Header config
+[params.header]
+  # desktop header mode ["fixed", "normal", "auto"]
+  desktopMode = "fixed"
+  # mobile header mode ["fixed", "normal", "auto"]
+  mobileMode = "auto"
+  # Header title config
+  [params.header.title]
+    # URL of the LOGO
+    logo = ""
+    # title name
+    name = "Andy Holt"
+    pre = "🦉"
+    post = ""
+    typeit = false
+
+[params.footer]
+  enable = true
+  # custom content
+  custom = ""
+  # whether to show Hugo and theme info
+  hugo = true
+  # whether to show copyright info
+  copyright = true
+  author = true
+  # site creation time (first date of copyright notice)
+  since = 2023
+  # ICP info for China
+  icp = ""
+  # license info
+  license = 'This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>'
+
+# app icon config
+[params.app]
+  title = "Andy Holt's Landing Page"
+  noFavicon = false
+  svgFavicon = ""
+  # Android browser theme colour
+  themeColor = "#ffffff"
+  # Safari mask icon colour
+  iconColor = "#5bbad5"
+  # Windows v8-10 tile color
+  tileColor = "#da532c"
+
+# Home page config
+[params.home]
+  # home page profile
+  [params.home.profile]
+    enable = true
+    # URL of avatar for home page
+    avatarURL = "/img/beach.JPG"
+    # title below avatar of home page (not header title)
+    title = "Hello, I'm Andy"
+    # subtitle shown on home page
+    subtitle = "Welcome to my nook of the internet"
+    # whether to use typeit animation for subtitle
+    typeit = true
+    # whether to show social links
+    social = true
+    disclaimer = "All views expressed are mine at the time of writing, but not necessarily at the time of reading."
+  [params.home.posts]
+    enable = false
+
+# social config about author
+[params.social]
+  Github = "AndyHolt"
+  Twitter = "theotherholt"
+  Instagram = "theotherholt"
+  RSS = true
+  [params.social.Mastodon]
+  # weight for arranging (higher = later positioning)
+  weight = 2
+  # social ID
+  id = "@andyholt"
+  # prefix of social link
+  prefix = "https://mas.to/"
+  # hover text
+  title = "Mastodon"
+
+# page global config
+[params.page]
+  # whether to hide from home page
+  hiddenFromHomePage = false
+  # whether to hide from search results
+  hiddenFromSearch = false
+  # whether to enable twemoji
+  twemoji = false
+  # whether to enable lightgallery
+  lightgallery = false
+  # whether to enable ruby extended syntax
+  ruby = true
+  # whether to enable fraction extended syntax
+  fraction = true
+  # whether to enable fontawseome extended syntax
+  fontawesome = true
+  # whether to show link to raw markdown of the content
+  linkToMarkdown = false
+  # show full text in RSS
+  rssFullText = true
+  # Table of contents
+  [params.page.toc]
+    # whether to keep static TOC in front of post
+    enable = true
+    # whether to make TOC in sidebar auto collapse
+    auto = true
+  # KaTeX formulas
+  [params.page.math]
+    enable = true
+    # default delimiter is $ ... $ and \( ... \)
+    inlineLeftDelimiter = ""
+    inlineRightDelimiter = ""
+    # KaTeX extension copy_tex
+    copyTex = true
+    # KaTeX extension mhchem
+    mhchem = true
+  # code config
+  [params.page.code]
+    # whether to show copy button of code block
+    copy = true
+    # maximum number of lines displayed by default
+    maxShownLines = 100
+  # TODO: Mapbox GL JS config -- compare to Leaflet?
+  # social share links in post page
+  [params.page.share]
+    enable = false
+  # comment config
+  [params.page.comment]
+    enable = false
+
+# TypeIt config
+[params.typeit]
+  # typing speed between each character (milliseconds)
+  speed = 80
+  # cursor blink speed (milliseconds)
+  cursorSpeed = 1000
+  # character used for cursor
+  cursorChar = "|"
+  # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
+    duration = -1
