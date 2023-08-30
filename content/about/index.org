@@ -1,0 +1,66 @@
+#+TITLE: About Me
+#+DATE: 2023-08-30
+
+Hello! My name is Andy. I live in Dundee, Scotland with my wife and our son.
+
+I have a background in both engineering and Christian ministry, and my interests
+draw from both of these areas, and others.
+
+* Theological Interests
+My theological interest has grown from my Christian faith, being convinced that
+the teaching and claims of Jesus of Nazareth are true, and only in him can we
+receive forgiveness and life to the full (John 10:10). The same disposition of
+seeking rigorous and thorough understanding that was instilled through my
+scientific and engineering education has led me to seek robust and critical
+engagement with the Bible and theology. /Fides quaerens intellectum./[fn:2]
+
+- I love studying the biblical languages, Post-Classical Greek[fn:1] and
+  Biblical Hebrew, and I would love to study some other ancient languages in the
+  future.
+- I am especially interested in biblical studies and the pursuit of the original
+  purpose and meaning of the biblical texts, employing a wide variety of
+  linguistic, historical, cultural, literary and theological disciplines. I
+  particularly enjoy considering how later biblical authors use earlier
+  Scriptures, both within the Hebrew Bible itself and in the New Testament's use
+  of the Old Testament (in Hebrew and the Septuagint).
+- I enjoy reading biblical and systematic theology, and some favourite thinkers
+  include Augustine (354--420), John Calvin (1509--1564) and Herman Bavinck
+  (1854--1921), as well as the English Baptists and the (English) Puritans.
+* Engineering Interests
+My engineering background focused on electronic and information engineering,
+particularly machine learning, as well as control theory. More generally I am
+interested in computers and problem solving through mathematical and
+probabilistic methods.
+
+- I enjoy programming, and especially like Python for getting things done. I
+  began programming through microcontrollers in assembly, and from there have
+  worked up through C++ to higher level languages such as Python. I like the
+  approach of functional programming in Lisp (I've dabbled in Haskell). I've
+  recently been exploring web development using JavaScript and the React
+  framework.
+- I'm interested in machine learning and its use for improving and optimising
+  systems. My masters thesis investigated the use of [[https://en.wikipedia.org/wiki/Gaussian_process][Gaussian processes]] for
+  developing optimal control systems.
+- I love the Emacs text editor and its Lisp-environment approach, allowing for
+  extensive adaptability, modification and extensibility. See my [[https://github.com/AndyHolt/dotemacs][Emacs
+  configuration]] on Github. And yes, I'm one of those helpless Emacs users who
+  gradually adopted [[https://orgmode.org/][Org mode]] and now uses it for everything (including this
+  webpage).
+- I am also a big fan of LaTeX, and have written various [[https://github.com/AndyHolt/LaTeXClasses][classes and packages]]
+  for my own use.
+* Other Interests
+I also enjoy various other things, in no particular order:
+- Walking with my family in the fields and woods near where we live
+- Coffee
+- Learning new things
+- Playing the guitar
+- Reading as widely as I can
+- Watching light and gentle TV shows with my wife, especially /Parks and Rec/ and
+  /Brooklyn Nine-Nine/. We're currently watching /Bob's Burgers/.
+- Fountain pens
+
+
+
+
+[fn:2] Faith seeking understanding. Anselm of Canterbury, /Proslogion/ 1.
+[fn:1] also known as Koine or Hellenistic Greek.
