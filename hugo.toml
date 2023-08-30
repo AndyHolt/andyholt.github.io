@@ -44,6 +44,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = "/about"
     # title will be shown when you hover on this menu link
     title = ""
+  [[menu.main]]
+    weight = 1
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects"
 
 [params]
   # site default theme ["auto", "light", "dark"]

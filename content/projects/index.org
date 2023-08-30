@@ -1,0 +1,17 @@
+#+TITLE: Projects
+
+* The Blanding Consultant
+
+{{< inlineimage image="/img/BlandingConsultantScreenshot.png" >}}
+
+[[https://blanding-consultant.nw.r.appspot.com][The Blanding Consultant]] is an AI character name generator, producing P. G.
+Wodehouse style character names.
+
+This was a project to develop my text-generative machine learning skills, as
+well as my first full-stack web development project.
+
+Backend in Python, frontend built with React. Deployed on Google Cloud App
+Engine.
+
+See blog post (coming soon!) for more details on the development of The Blanding
+Consultant.
