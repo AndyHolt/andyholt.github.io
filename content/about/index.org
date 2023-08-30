@@ -6,6 +6,8 @@ Hello! My name is Andy. I live in Dundee, Scotland with my wife and our son.
 I have a background in both engineering and Christian ministry, and my interests
 draw from both of these areas, and others.
 
+{{< inlineimage image="/img/beach.JPG" alt="Standing on beach" >}}
+
 * Theological Interests
 My theological interest has grown from my Christian faith, being convinced that
 the teaching and claims of Jesus of Nazareth are true, and only in him can we

@@ -5,3 +5,10 @@ $global-font-family: Raleway, system-ui, -apple-system, Segoe UI, Roboto, Emoji,
 $global-link-hover-color-dark: #eda907;
 
 $header-title-font-family: $global-font-family;
+
+.inline-image {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

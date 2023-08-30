@@ -1,0 +1,4 @@
+<img {{ if .Get "class" }} class="inline-image {{ .Get "class" }}" {{ else }} class="inline-image" {{ end }}
+     src="{{ .Get "image"}}"
+     {{ with .Get "alt" }} alt="{{ . }}" title="{{ . }}" {{ end }}
+ />
