@@ -1,3 +1,5 @@
+// USE THIS FILE TO OVERRIDE VARIABLES, BUT NOT FOR ADDING CUSTOM CSS!
+// SEE _custom.scss FOR CUSTOM CSS
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
 $global-font-family: Raleway, system-ui, -apple-system, Segoe UI, Roboto, Emoji,
                      Helvetica, Arial, sans-serif;
@@ -5,10 +7,3 @@ $global-font-family: Raleway, system-ui, -apple-system, Segoe UI, Roboto, Emoji,
 $global-link-hover-color-dark: #eda907;
 
 $header-title-font-family: $global-font-family;
-
-.inline-image {
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
