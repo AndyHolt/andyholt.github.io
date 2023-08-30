@@ -14,4 +14,4 @@ Backend in Python, frontend built with React. Deployed on Google Cloud App
 Engine.
 
 See blog post (coming soon!) for more details on the development of The Blanding
-Consultant.
+Consultant. The code is on [[https://github.com/andyholt/the-blanding-consultant][Github]].
