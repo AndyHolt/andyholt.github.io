@@ -1,0 +1,19 @@
+<h2 class="project-heading"><a href="{{ .Get "link" }}">{{ .Get "name" }}</a></h2>
+  <div class="project-container">
+    <div class="project-description">
+      {{ .Inner }}
+    </div>
+    <div class="project-picture">
+      <figure>
+        <a href="{{ .Get "link" }}">
+          <img src="{{ .Get "image" }}"
+               alt="{{ .Get "name"}} screenshot"
+               title="{{ .Get "name" }}"
+               />
+        </a>
+        <figcaption>
+          <p>{{ .Get "name" }} screenshot</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>

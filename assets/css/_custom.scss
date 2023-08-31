@@ -6,3 +6,27 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.project-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 10px;
+}
+
+.project-description {
+  flex: 1 0 60%;
+}
+
+.project-picture {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  // flex: 1 0 40%;
+}
+
+@media screen and (max-width: 650px) {
+  .project-container {flex-wrap: wrap;}
+}
