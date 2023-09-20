@@ -19,9 +19,9 @@ fascinating areas of study and learning in their own right, my desire is not
 simply to know about the Bible, but through it to know God and enjoy him
 forever. /Fides quaerens intellectum./[fn:2]
 
-- I love studying the biblical languages, Post-Classical Greek[fn:1] and
-  Biblical Hebrew, and I would love to study some other ancient languages in the
-  future.
+- I love studying the biblical languages -- Post-Classical Greek[fn:1] and
+  Biblical Hebrew (I haven't yet learned Aramaic) -- and I would love to study
+  some other ancient languages in the future.
 - I am especially interested in biblical studies and the pursuit of the original
   purpose and meaning of the biblical texts, employing a wide variety of
   linguistic, historical, cultural, literary and theological disciplines. I
@@ -33,16 +33,16 @@ forever. /Fides quaerens intellectum./[fn:2]
   (1854--1921), as well as the English Baptists and the (English) Puritans.
 * Engineering Interests
 My engineering background focused on electronic and information engineering,
-particularly machine learning, as well as control theory. More generally I am
-interested in computers and problem solving through mathematical and
-probabilistic methods.
+particularly machine learning and control theory. More generally I am interested
+in computers and problem solving through mathematical and probabilistic methods.
 
 - I enjoy programming, and especially like Python for getting things done. I
   began programming through microcontrollers in assembly, and from there have
   worked up through C++ to higher level languages such as Python. I like the
   approach of functional programming in Lisp (I've dabbled in Haskell). I've
   recently been exploring web development using JavaScript and the React
-  framework.
+  framework. I'm cutting my teeth in Go, and I'm thinking of finding a project
+  to learn Rust (a passing fad, or a powerful frontier? Time will tell).
 - I'm interested in machine learning and its use for improving and optimising
   systems. My masters thesis investigated the use of [[https://en.wikipedia.org/wiki/Gaussian_process][Gaussian processes]] for
   developing optimal control systems.
