@@ -31,7 +31,18 @@
   .project-container {flex-wrap: wrap;}
 }
 
+.footnote-definition {
+  display: grid;
+  grid-template-columns: 1em 1fr;
+  grid-template-rows: 1fr;
+}
+
 .footnote-body {
   display: inline-block;
   vertical-align: top;
+}
+
+.footnote-definition > sup {
+  vertical-align: top;
+  top: 0.8rem;
 }
