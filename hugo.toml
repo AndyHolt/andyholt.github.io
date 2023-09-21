@@ -28,7 +28,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 # Author config
 [author]
   name = "Andy Holt"
-  email = "my-email@example.org.uk"
+  email = ""
   link = ""
 
 # Menu config
