@@ -1,0 +1,326 @@
+#+TITLE: Solving Leetcode Problem #399, "Evaluate Division"
+#+DATE: 2023-11-02
+#+SLUG: solving-leetcode-399
+
+Because I studied engineering and not computer science, I never took a specific
+class on algorithms and data structures. In an attempt to self-educate and catch
+up, I've been working through a number of [[https://leetcode.com/][Leetcode]] problems, working with
+Python. This has helped me get a better grasp of some of the standard algorithm
+and data structure problems and approaches, as well as helping me learn more
+about Python's data structures and their properties, and brushing up my Python
+style.
+
+A nice problem, for which I devised what I think is a fairly nice solution, is
+[[https://leetcode.com/problems/evaluate-division/][399. Evaluate Division]].
+
+* The problem
+The problem is to use a series of divisor equations to solve another series of
+equations. In other words, a set of ratios between a number of variables is
+given, and a different set of ratios of variables is required. For example, the
+given equations may be:
+
+{{< raw >}}
+\begin{equation*}
+\frac{a}{b} = 2.0, \quad \frac{b}{c} = 3.0;
+\end{equation*}
+{{< /raw >}}
+
+and the required equations to evaluate may be:
+
+{{< raw >}}
+\begin{equation*}
+\frac{a}{c}, \quad \frac{b}{a}, \quad \frac{a}{e}, \quad \frac{a}{a} \quad \mathrm{and} \quad \frac{x}{x}.
+\end{equation*}
+{{< /raw >}}
+
+In the problem definition, unsolvable equations (including those actually
+solvable but using undefined variables like $\frac{x}{x}$ here) should receive
+the result -1.0, and values are otherwise positive to ensure the insoluble case
+is distinguishable. Solving the equations manually is straightforward. But it's
+quite an interesting problem to write a programme to solve a general set of
+input and output equations with the added complication that some required
+equations can't be solved.
+
+* Working towards a solution
+After briefly considering whether a matrix-based approach might be useful, and
+quickly discovering how rusty my linear algebra is, I turned to a graph based
+approach. Each variable from the input equations is represented by a node, and
+the relation of one variable to another is represented by a directed and
+weighted edge. So the equation:
+{{< raw >}}
+\begin{equation*}
+\frac{a}{b} = 2.0
+\quad
+\Rightarrow
+\quad
+a = 2.0 b
+\end{equation*}
+{{< /raw >}}
+can be represented by the graph:
+{{< mermaid >}}
+graph LR
+   a((a)) -- 2.0 --> b((b))
+{{< /mermaid >}}
+A more complex set of equations from one of the problem test cases is:
+{{< raw >}}
+\begin{equation*}
+\frac{a}{b} = 2.0, \quad \frac{c}{b} = 3.0, \quad \frac{d}{b} = 4.0, \quad
+\frac{w}{x} = 5.0, \quad \frac{y}{x} = 6.0, \quad \frac{z}{x} = 7.0, \quad
+\frac{w}{d} = 8.0
+\end{equation*}
+{{< /raw >}}
+This can be represented in the graph:
+{{< mermaid >}}
+graph TB
+   a((a)) -- 2.0 --> b((b))
+   c((c)) -- 3.0 --> b
+   d((d)) -- 4.0 --> b
+   w((w)) -- 5.0 --> x((x))
+   y((y)) -- 6.0 --> x
+   z((z)) -- 7.0 --> x
+   w -- 8.0 --> d
+{{< /mermaid >}}
+
+To solve the required equations, one simply traverses the graph, starting at the
+numerator node and ending at the denominator node, and taking the product of the
+edges over the route. For example, if a required equation is $\frac{w}{b}$, we
+can solve this by the substitutions:
+{{< raw >}}
+\begin{equation*}
+ w = 8.0 d \quad \mathrm{and} \quad d = 4.0 b \quad \therefore w = 32 b
+\end{equation*}
+\begin{equation*}
+\Rightarrow \frac{w}{b} = \frac{32 b}{b} = 32
+\end{equation*}
+{{< /raw >}}
+
+From this procedure, it is clear that the product of edges traversed is
+equivalent to the substitutions required to get the numerator in terms of the
+denominator, and therefore the product of edges gives the result. We move from
+node $w$ to node $d$, with edge weight 8, then from node $d$ to node $b$ with
+edge weight 4, and the product gives 32.
+
+Initially, I thought the task would be best approached by using a single
+direction of edge to represent each input equation. While the equation
+{{< raw >}}
+\begin{equation*}
+\frac{a}{b} = 2.0
+\end{equation*}
+{{< /raw >}}
+defines two relations:
+{{< raw >}}
+\begin{equation*}
+a = 2.0 b \quad \mathrm{and} \quad b = 0.5 a
+\end{equation*}
+{{< /raw >}}
+the difficulty of encoding both relations in the graph is that it introduces
+cycles into the graph.
+{{< mermaid >}}
+graph LR
+    a((a)) -- 2.0 --> b((b))
+    b -- 0.5 --> a
+{{< /mermaid >}}
+
+Using only a single edge will result in a non-cyclic graph for a well determined
+set of input equations, and this makes traversing the graph simple.
+
+A single direction of graph makes traversal simple, but brings a challenge.
+Undefined equations (which receive the answer -1.0) are those for which no path
+exists from numerator to denominator. But if the equation demanded in the
+example above were not $\frac{w}{b}$ but instead $\frac{b}{w}$, this would
+result in a wrong answer.
+
+My solution to overcome this was to first try to traverse the graph from
+numerator to denominator. But if this failed, then try traversing from
+denominator to numerator, then return the inverse of the edge products. Thus
+while the traversal $b \rightarrow w$ will result in failure and a wrong returned
+value of -1.0, when we try $w \rightarrow b$, we have success, and can invert
+the product to get the reverse journey.
+
+Two further cases require attention. Using the information encoded in the graph,
+both $\frac{a}{c}$ and $\frac{d}{x}$ are solvable, using substitution of values.
+In the case of $\frac{a}{c}$, the common child node $b$ gives a common term to
+solve, while in the case of $\frac{d}{x}$, the parent of both nodes $w$ provides
+a common term. I therefore added further logic to check if nodes had either a
+common child or a common parent, and use these to get the correct result.
+
+However, the nature of the connected graph is that any pair of nodes in the
+graph will yield a valid solution, by enough steps of substitution, and using
+direct common parents and children is not enough. For example, the relation
+$\frac{z}{c}$ can be obtained by substitution through $x, w, d, b$.[fn:1] This
+could be resolved by recursively searching for common children and parents of
+the intermediate nodes at every point until an exhaustive search has been
+carried out between the two nodes. But at this point, it was clear that the
+single edge, non-cyclic graph was actually becoming a liability rather than a
+help.
+* Simplifying by adding complexity
+The path from any node within a connected graph to any other could be easily
+found if we make the graph more complex: by adding both relations represented by
+an equation. While the cycles this introduces between every pair of directly
+connected nodes must be carefully navigated in traversing the graph (so as to
+avoid falling into infinite loops), the additional complexity of traversal pays
+for itself in being able to follow a straightforward path between any two nodes
+in the graph.
+
+Adding both relations for the example we have been following results in the
+following graph:
+{{< mermaid >}}
+graph LR
+   a((a)) -- 2.0 --> b((b))
+   b -- 0.5 --> a
+   c((c)) -- 3.0 --> b
+   b -- 0.333 --> c
+   d((d)) -- 4.0 --> b
+   b -- 0.25 --> d
+   w((w)) -- 5.0 --> x((x))
+   x -- 0.2 --> w
+   y((y)) -- 6.0 --> x
+   x -- 0.1667 --> y
+   z((z)) -- 7.0 --> x
+   x -- 0.143 --> z
+   w -- 8.0 --> d
+   d -- 0.125 --> w
+{{< /mermaid >}}
+
+With this new, more complex graph, solving any determinate equation becomes as
+simple as following the edges and taking their product. However, the traversal
+becomes slightly more complicated in that we need to avoid following infinite
+cycles in the graph.
+
+I used a depth first search (DFS) approach to traversal, using a recursive
+function to follow to any connected nodes from each node visited. To avoid
+infinite loops, it becomes necessary to keep track of nodes which have been
+already visited, and avoid trying them at each new level of recursion. This is
+quite straightforward, simply maintaining a list of visited nodes and adding the
+current node to the list before calling the recursive function on child nodes.
+So here we find our paradoxical result: by making the graph more complex, we
+have greatly simplified the problem as a whole. And probably if I had been aware
+of this from the beginning, I would have solved the problem quicker, and
+wouldn't think of it as being quite so nice a problem as it seems having started
+with an overly complex strategy. There are upsides in taking the scenic route.
+* Code and walk-through
+So now that the strategy is clear, here is the code I submitted to solve the
+Leetcode problem.
+
+
+#+begin_src python
+class Node:
+    def __init__(self, name="", edgeNodes=[], edgeWeights=[]):
+        self.name = name
+        self.edgeNodes = edgeNodes
+        self.edgeWeights = edgeWeights
+
+
+class Solution:
+    nodeDict = {}
+
+    def traversalCost(
+        self, start: Optional["Node"], end: "Node", visited: List["Node"], weight: float
+    ) -> float:
+        if start is None:
+            return -1 * weight
+        elif end == start:
+            return weight
+        else:
+            for idx, n in enumerate(start.edgeNodes):
+                if n in visited:
+                    continue
+                res = self.traversalCost(
+                    n, end, visited + [n], weight * start.edgeWeights[idx]
+                )
+                if res >= 0:
+                    return res
+
+            return -1.0
+
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
+        self.nodeDict = {}
+
+        for i in range(len(equations)):
+            if equations[i][0] not in self.nodeDict:
+                self.nodeDict[equations[i][0]] = Node(equations[i][0], [], [])
+            if equations[i][1] not in self.nodeDict:
+                self.nodeDict[equations[i][1]] = Node(equations[i][1], [], [])
+            self.nodeDict[equations[i][0]].edgeNodes.append(
+                self.nodeDict[equations[i][1]]
+            )
+            self.nodeDict[equations[i][0]].edgeWeights.append(values[i])
+            self.nodeDict[equations[i][1]].edgeNodes.append(
+                self.nodeDict[equations[i][0]]
+            )
+            self.nodeDict[equations[i][1]].edgeWeights.append(1.0 / values[i])
+
+        res = [0] * len(queries)
+        for idx, q in enumerate(queries):
+            print(f"Handling query {idx}, which is {q}")
+            if q[0] not in self.nodeDict or q[1] not in self.nodeDict:
+                print(f"One of {q[0]} or {q[1]} not known, give -1.0")
+                res[idx] = -1.0
+            else:
+                res[idx] = self.traversalCost(
+                    self.nodeDict[q[0]], self.nodeDict[q[1]], [], 1.0
+                )
+
+        return res
+#+end_src
+
+Lines 1--5 define the ~Node~ class which is used to represented the graph. Edges
+between nodes are defined as attributes of the parent node from which they come,
+with a reference to the child node. This is useful for traversing the graph,
+since everything needed to operate from a given node is contained within that
+object.
+
+In the ~Solution~ class, a class attribute ~nodeDict~ is make which can be accessed
+by all class methods. This provides a lookup map from a node's name, which is
+the variable it represents, to the object which defines that node.
+
+The method ~traversalCost~ performs the traversal using a DFS approach, and
+returns the cost of the product of edges for traversing from a starting node to
+an end node. If the returned value is negative, the end node is not reachable
+from the starting node, and the value returned is unimportant. If the start node
+is ~None~, no nodes can be reached, so a negative result is returned. If we have
+reached the end node, there is no additional cost, since the end has already
+been reached, and we return the current cost, that is ~weight~. Otherwise, we loop
+through the child nodes from the current node. In order to avoid infinite loops,
+if a node appears in the ~visited~ list, it is skipped. Otherwise, we perform the
+recursion with the child node. ~traversalCost~ is called again, now using the
+child node as the starting node, keeping the same target node, ~end~. The parent
+node is added to the list of visited nodes passed to the next level of
+recursion, and the weight of the edge from parent to child is multiplied by the
+weight from the original start to the present node. If any child node returns
+with a positive value, it means the end node was reached, with a cost from the
+current node of ~res~, so return this value to the calling function. If none of
+the children return a positive value, ~traversalCost~ will return with value -1.0.
+
+The main function is ~calcEquation~. This first initialises the empty ~nodeDict~ to
+makes sure the graph is empty when beginning a new test case. The arguments
+~equations~ and ~values~ together define the input equations, and these are used to
+build the graph in the first for loop, lines 35--47.
+
+Once the graph is built, it can be used to get the result for each of the
+~queries~, the required equations. For each query, the two variables which define
+the equation are first checked to be known in the graph, and if they are not,
+the result of -1.0 is used. If they are both known, ~traversalCost~ is called from
+the numerator to the denominator. If the returned value is negative, -1.0 is the
+defined value as required in the problem statement, or otherwise, the product of
+edges is returned. Once all queries have been evaluated, ~calcEquation~ returns
+the list of results.
+
+The exact performance of my approach is somewhat hard to measure, since Leetcode
+gives a huge variance of run times and percentiles for different runs of the
+same code. I tend to find that even if I use the same code as one of the very
+fastest solutions, my best runs are a bit slower -- perhaps recent Python
+versions have bigger imports and slower runtimes? So I was pleased with a result
+of this one of 31ms and beating 94.90% of all Python solutions for the problem.
+While I don't read too much into Leetcode's figures, and my purpose here is to
+learn about algorithms, data structures, and idiomatic Python -- I'm not trying
+to score the very best times -- these results seem pretty solid to me.
+
+If you can think of a better way of approaching this problem, or a better way of
+implementing it in Python, let me know [[https://mas.to/@andyholt][on Mastodon]].
+
+* Footnotes
+
+[fn:1] Left as an exercise for the reader. 
