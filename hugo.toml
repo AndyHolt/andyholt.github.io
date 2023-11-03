@@ -4,7 +4,7 @@ baseURL = "http://andyholt.github.io/"
 theme = "LoveIt"
 
 # Website title
-title = "Andy Holt's Landing Page"
+title = "Andy Holt"
 
 # language set up
 languageCode = 'en'
