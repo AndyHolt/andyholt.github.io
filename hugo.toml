@@ -11,10 +11,6 @@ languageCode = 'en'
 languageName = "English"
 hasCJKLanguage = false
 
-# default number of posts per page
-# todo: (does it have to be paginated?)
-paginate = 12
-
 # use robots.txt from LoveIt theme
 enableRobotsTXT = true
 # use git commit log (?)
@@ -25,11 +21,11 @@ enableEmoji = true
 # ignore some build errors
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
-# Author config
-[author]
-  name = "Andy Holt"
-  email = ""
-  link = ""
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = "page"
+
 
 # Menu config
 [menu]
@@ -71,6 +67,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # TODO: website images for Open Graph and Twitter Cards
   # images = ["/logo.png"]
 
+[params.author]
+  name = "Andy Holt"
+  email = ""
+  link = ""
+
 # Header config
 [params.header]
   # desktop header mode ["fixed", "normal", "auto"]
@@ -102,6 +103,23 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   icp = ""
   # license info
   license = 'This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:14px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>'
+
+# Section (all posts) page config
+[params.section]
+  paginate = 20
+  # Month and day
+  dateFormat="01-02"
+  # rss pages
+  rss = 10
+
+
+# List (category or tag) page config
+[params.list]
+  paginate = 20
+  # Month and day
+  dateFormat = "01-02"
+  # amount of rss pages
+  rss = 10
 
 # app icon config
 [params.app]
@@ -172,12 +190,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   rssFullText = true
   # Table of contents
   [params.page.toc]
-    # whether to keep static TOC in front of post
     enable = true
+    # whether to keep static TOC in front of post
+    keepStatic = false
     # whether to make TOC in sidebar auto collapse
     auto = true
   # KaTeX formulas
   [params.page.math]
+    # Enable KaTeX maths formatting
     enable = true
     # default delimiter is $ ... $ and \( ... \)
     inlineLeftDelimiter = ""
@@ -194,6 +214,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     maxShownLines = 100
   # TODO: Mapbox GL JS config -- compare to Leaflet?
   # social share links in post page
+  [params.page.code.render]
+    goat = true
+    mermaid = true
   [params.page.share]
     enable = false
   # comment config

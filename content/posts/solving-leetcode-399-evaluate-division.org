@@ -1,5 +1,6 @@
 #+TITLE: Solving Leetcode Problem #399, "Evaluate Division"
 #+DATE: 2023-11-02
+#+AUTHOR: Andy Holt
 #+SLUG: solving-leetcode-399
 
 Because I studied engineering and not computer science, I never took a specific
@@ -323,4 +324,4 @@ implementing it in Python, let me know [[https://mas.to/@andyholt][on Mastodon]]
 
 * Footnotes
 
-[fn:1] Left as an exercise for the reader. 
+[fn:1] Left as an exercise for the reader.

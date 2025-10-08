@@ -1,0 +1,164 @@
+#+TITLE: Reconnecting After a Storm
+#+DATE: 2025-10-07
+#+AUTHOR: Andy Holt
+#+SLUG: reconnecting-after-storm
+
+I would never claim that we live at the beating heart of civilisation. But the
+outskirts of Dundee are hardly the wilderness. Even so, a recent storm has
+knocked out our internet access, and this is how I've managed to get us
+temporarily back on line. Hopefully it'll be a short term fix -- but I fear it
+may grow into one of those short term fixes that become all too permanent.
+
+I've learned enough in trying to solve the problem to seem worth writing up.
+It's not really concrete enough to record a "how to" in my personal notes, so a
+blog post seemed like a fitting record.
+
+* Losing connection
+
+Last Friday, a storm blew down a tree which fell on the phone and internet line
+into the village. The first I knew of it was the internet connection being down
+from our wifi network, though I didn't realise at first. Occasionally, the
+internet connection gets dropped by our router, and resolves after a router
+reboot. It's one of those issues that I should really sort out, but it's both
+easy to fix by power cycling the router, and so intermittent that it would be
+difficult to debug and know whether any solution has worked. So I've lived with
+the occasional dropping of the connection and needing to turn the router off and
+on again.
+
+But this time, when my wife complained the router needed rebooting, it didn't
+work. Then a minute or two later I had a text from our ISP that there was an
+openreach problem, our service was down, and they were aiming to fix it by 2am.
+
+Being a Friday night, and a significant storm, I had my doubts about the 2am
+fix. But I was pretty impressed by the observability and notification system
+of the ISP.
+
+Over the weekend, the scale of the problem became clear as neighbours shared
+their issues and attempts to get some info from various internet providers, and
+photos of the fallen tree appeared on the local whatsapp groups.
+
+With no live TV in our house, we managed to survive a weekend without screen
+time for the kids. But more pressing was whether the internet would be back by
+Monday. Since I work remotely as a software engineer on a web platform, no
+internet would make things rather difficult.
+
+While the village -- which we live just outside of -- isn't a large village,
+it's also not at all remote, and is surrounded by other villages and
+settlements. So I was surprised that a single line would completely knock out
+internet for such a large populated area. So it's interesting to consider more
+deeply the infrastructure on which we depend every day, yet never give any
+thought to.
+* Assessing the options
+Once it became clear that the line wasn't going to be fixed for the start of the
+week, I began to consider the options for getting some work done.
+
+One option is to relocate to somewhere with an internet connection, and spend a
+week or two working out of coffee shops and libraries. There may still be some
+of that, but I also didn't want to limit my access to decent sized monitors and
+work off my 13 inch MacBook Air screen for an extended time. The 13 inch M3
+MacBook Air is an /amazing/ machine -- capable, portable, and completely silent.
+But it's much easier to do serious editing and research when plugged into a
+couple of 4K monitors at my desk.
+
+Relocating also wouldn't solve the problem of internet access for the rest of
+the family. Or outside of coffee shop hours (which working at a start up
+involves quite a bit of).
+
+Another option was to get a 4G dongle -- the USB stick that takes a sim card and
+plugs into a laptop to provide access via the mobile phone network. My initial
+guess was that this was the obvious way to go. But phone signal in our house
+isn't great, and especially in the room I use for a study.
+
+Some research confirmed that a dongle was unlikely to serve very well, with the
+tiny antenna of a compact, portable usb stick giving poor performance in
+anything but the strongest coverage areas.
+
+However, another suggestion was to pay a little more than the cost of a dongle
+and get a router which takes a sim card. I wasn't aware of this product category
+at all, but it provides 2 major advantages. First, being somewhat bigger than a
+dongle, it can make use of beefier antennae to make the most of whatever signal
+there is. And secondly, not needing to plug in directly to the computer, it can
+be positioned for best network signal, like next to a window on the other side
+of the house.
+
+An additional benefit of a mobile service router is that, if I could find a way
+to connect it to our existing router, all our other devices in the house could
+remain on the existing networks, without the need to switch networks for a few
+days or weeks until normal service is resumed.
+
+* The current temp-fix solution
+
+There were two big unknowns in embarking on this project, which are still
+largely unknown as I write. One is how long this temporary solution will be
+needed -- it may be for just a few days, though probably a couple of weeks.
+Hopefully not many weeks or months, though it could be. The other unknown is how
+well a 4G or 5G router would perform, whether the stability of connection and
+speed would be good enough to make working from home viable, however
+temporarily.
+
+Given these uncertainties, I wasn't going to fork out hundreds on a state of the
+art router. Some online recommendations and a timely Amazon deal led me to the
+TP-Link TL-MR100. The specs are not particularly impressive, but it was cheap
+enough to try (at least with Amazon's return policy), and available quickly
+enough to give it a go. I was pretty confident the router's "up to 300Mbps"
+wasn't going to be the rate limiting factor. That would be about 15 times faster
+than our usual download speed anyway.
+
+{{< inlineimage image="/img/4g-router.jpg" alt="TP-Link TL-MR100 4G LTE Router, set up by window" >}}
+
+After jumping through what felt like an inordinate number of hoops, I also
+managed to order a monthly, unlimited data sim from the provider rated as having
+the best service in our area, EE. Neither of our phones are on EE, and the
+fairly rubbish reception we get on our network at home usually isn't an issue as
+we're on the WiFi anyway. They promised 4G speeds capped at 100Mbps, though I
+had my doubts we'd be bumping into any such speed restrictions.
+
+Today, both the sim card and router arrived, so I got them set up this evening,
+curious to see how the 4G router would perform, and how difficult it would be to
+get our existing router as an access point, served by the new router.
+
+The answers, not to bury the lede any further, are that the set up was
+reasonably simple, and the performance is fairly terrible.
+
+Initially, I just set up the new router as plug and play. Put in the sim card,
+turn it on, and move it around a few different places to test its signal and
+performance. The router has 3 LEDs to indicate signal level, and everywhere I
+tested had 2 or 3 lit. But speed tests started at around 500--600kbps, and
+haven't gone above 2Mbps.
+
+I'm not sure what speed I was expecting, but this has been pretty disappointing.
+Tethering off my phone, with only a single or couple of bars of signal (out
+of 4) tended to give about 3 times better speeds.
+
+Despite the poor speed test results, I was reasonably impressed that I managed
+to stream some "Have I Got News for You" and YouTube. Not at very high quality,
+but watchable.
+
+The speed isn't great, but the connection stability seems to be an improvement
+on my tethering experience over the past couple of days. The connection dropping
+every few minutes has been far more annoying than the relatively slow download
+speeds.
+
+As to setting up the router with our existing router (what this was supposed to
+be all about), I've learned a bit more about networking, so it hasn't been a
+complete waste of time.
+
+The setup I've ended up with is the TP-Link 4G router providing the intenet
+connection, and forwarding all traffic to our existing router, operating in the
+"DMZ" (demilitarised zone), and our usual router then doing all its normal jobs.
+
+To do this, I first gave the TP-Link router a new local, static IP address and
+set up the DHCP range. Then our normal router is plugged in with its WAN port to
+the TP-Link by ethernet cable. Then a new WAN interface is configured for the
+existing router. Once the access-point router is assigned an IP by the TP-Link, that address can
+be set for NAT forwarding as DMZ.
+
+My understanding is that the TP-Link router then just passes everything to the
+existing router. The existing router acts as normal, but receiving packets from
+the 4G router instead of the usual broadband line and modem.
+
+Time will tell whether the connection is serviceable, but I've managed to fix my
+hugo config and write up this post using the new connection. And so far, the
+stability has been far better than my tethering experience had been.
+
+Tethering my laptop from my phone was bringing me to the end of mine.
