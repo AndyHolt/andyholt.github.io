@@ -239,3 +239,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     posts = '/posts/:year/:month/:slug/'
   [permalinks.section]
     posts = '/posts/'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
