@@ -1,5 +1,6 @@
 #+TITLE: Building The Blanding Consultant
 #+DATE: 2023-08-31
+#+AUTHOR: Andy Holt
 #+SLUG: building-blanding-consultant
 
 [[https://blanding-consultant.nw.r.appspot.com][The Blanding Consultant]] is an AI[fn:AIvsML] character name generator,
