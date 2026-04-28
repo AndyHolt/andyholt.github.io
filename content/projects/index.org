@@ -1,5 +1,42 @@
 #+TITLE: Projects
 
+{{< project-section name="Claude Notify"
+link="https://github.com/AndyHolt/claude_notify"
+image="/img/ClaudeNotifyNotificationScreenshot.png" >}}
+<p>
+<a href="https://github.com/AndyHolt/claude_notify">Claude Notify</a> helps keep
+track of Claude Code sessions by sending MacOS notifications when a task has
+completed or user input is required.
+</p>
+
+<p>
+When using a coding-agent based software development workflow, it's usually
+advantageous to have a number of sessions on the go. This means while waiting
+for one session to do a longer task, you can keep making progress on other
+things. I run these different sessions using <a
+href="https://git-scm.com/docs/git-worktree">git worktrees</a>, each in a
+separate <a
+href="https://github.com/tmux/tmux/wiki/Getting-Started#sessions-windows-and-panes">tmux
+session</a>.
+</p>
+
+<p>
+The danger is that after kicking off a bigger task on a high-value ticket, you
+move to another session to work on another issue or feature. And by the time you
+get back to the first session, expecting a complete plan or commit ready to
+review, instead you find the agent got stuck in a permissions prompt after a
+couple of seconds, and hasn't made any progress.
+</p>
+
+<p>
+Claude Notify helps by sending a MacOS notification when a session is stuck and
+needs input, or when its complete and ready for review or the next prompt. This
+allows you, the human, to decide which sessions to prioritise moving forward,
+and which to leave waiting for some down-time.
+</p>
+{{</project-section >}}
+
+
 {{< project-section name="The Blanding Consultant"
 link="https://blanding-consultant.nw.r.appspot.com"
 image="/img/BlandingConsultantScreenshot.png" >}}
